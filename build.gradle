@@ -5,21 +5,27 @@ plugins {
 group 'org.example'
 version '1.0-SNAPSHOT'
 
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
+
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    testImplementation 'com.intuit.karate:karate-junit5:1.4.0.RC3'
-    testImplementation 'net.masterthought:cucumber-reporting:5.7.5'
+    testImplementation 'io.karatelabs:karate-junit5:1.5.2'
+    testImplementation 'net.masterthought:cucumber-reporting:5.9.0'
 }
 
-test{
+test {
     useJUnitPlatform()
 }
 
 sourceSets {
-    test{
+    test {
         resources {
             srcDir file('src/test/java')
             exclude '**/*.java'
